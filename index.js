@@ -28,11 +28,16 @@ function frisk(input) {
     };
 
     function Context(scope, parent) {
-        return scope;
+        return function(identifier) {
+            if (identifier in scope) return scope[identifier];
+            else if (parent !== undefined) return parent(identifier);
+        };
     }
 
     function interpretList(_, context) {
-        if (context[_[0]]) return context[_[0]](_.slice(1));
+        _ = _.map(function(x) { return interpret(x, context); });
+        if (_[0] instanceof Function) return _[0].call(undefined, _.slice(1));
+        else return _;
     }
 
     function interpret(_, context) {
@@ -40,6 +45,10 @@ function frisk(input) {
             return interpret(_, Context(library));
         } else if (_ instanceof Array) {
             return interpretList(_, context);
+        } else if (typeof _ === 'string' && _[0] === '@') {
+            return _.substring(1);
+        } else if (typeof _ === 'string') {
+            return context(_);
         } else {
             return _;
         }

@@ -22,6 +22,15 @@ describe('basic things', function() {
         });
     });
 
+    describe('nested expressions', function() {
+        it('can add', function() {
+            expect(frisk(['+', ['+', 1, 1], 1])).to.eql(3);
+        });
+        it('can subtract', function() {
+            expect(frisk(['+', ['-', 1, 1], 1])).to.eql(1);
+        });
+    });
+
     describe('identity', function() {
         it('first', function() {
             expect(frisk(['first', 2, 1])).to.eql(2);
