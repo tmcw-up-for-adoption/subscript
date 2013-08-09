@@ -1,20 +1,23 @@
 {
-  "name": "frisk",
-  "version": "0.0.0",
-  "description": "a lisp, kind of",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha -R spec"
-  },
-  "keywords": [
-    "lisp",
-    "metalanguage",
-    "language"
-  ],
-  "author": "Tom MacWright",
-  "license": "BSD",
-  "devDependencies": {
-    "mocha": "~1.12.0",
-    "expect.js": "~0.2.0"
-  }
+    "name": "frisk",
+    "version": "0.0.0",
+    "description": "a lisp, kind of",
+    "main": "index.js",
+    "bin": {
+        "frisk": "repl.js"
+    },
+    "scripts": {
+        "test": "mocha -R spec"
+    },
+    "keywords": [
+        "lisp",
+        "metalanguage",
+        "language"
+    ],
+    "author": "Tom MacWright",
+    "license": "BSD",
+    "devDependencies": {
+        "mocha": "~1.12.0",
+        "expect.js": "~0.2.0"
+    }
 }
