@@ -2,6 +2,21 @@ var expect = require('expect.js'),
     frisk = require('../');
 
 describe('basic things', function() {
+    describe('atoms', function() {
+        it('numbers', function() {
+            expect(frisk([1])).to.eql([1]);
+        });
+        it('lists', function() {
+            expect(frisk([1, 2])).to.eql([1, 2]);
+        });
+        it('nested lists', function() {
+            expect(frisk([1, 2, [3, 4]])).to.eql([1, 2, [3, 4]]);
+        });
+        it('strings', function() {
+            expect(frisk(['@foo'])).to.eql(['foo']);
+        });
+    });
+
     describe('math', function() {
         it('can add', function() {
             expect(frisk(['+', 1, 1])).to.eql(2);
