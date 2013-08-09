@@ -16,6 +16,12 @@ a lisp, kind of. all expressions are valid JSON-serializable javascript objects.
 [['lambda', ['x'], ['+', 'x', 'x']], 1] // => 2
 ```
 
+### Usage
+
+    npm install --save frisk
+
+web console: http://macwright.org/frisk/
+
 ### see also
 
 * heavily inspired by [little lisp](https://github.com/maryrosecook/littlelisp)
