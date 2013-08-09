@@ -11,6 +11,9 @@ a lisp, kind of. all expressions are valid JSON-serializable javascript objects.
 ['+', ['+', 1, 1], 1] // => 3
 [1, 2, 3] // => [1, 2, 3]
 ['@foo'] // => ['foo']
+['let', [['foo', 1]], ['foo']] // => 1
+[['lambda', ['x'], ['x', 'x']], 1] // => [1, 1]
+[['lambda', ['x'], ['+', 'x', 'x']], 1] // => 2
 ```
 
 ### see also
