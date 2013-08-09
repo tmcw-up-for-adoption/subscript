@@ -27,14 +27,38 @@ function frisk(input) {
         return _.slice(1);
     };
 
+    var special = {};
+
+    special.let = function(_, context) {
+        var ctx = _[1].reduce(function(acc, x) {
+            acc.scope[x[0]] = interpret(x[1], context);
+            return acc;
+        }, Context({}, context));
+        return interpret(_[2], ctx);
+    };
+
+    special.lambda = function(_, context) {
+        return function() {
+            var args = arguments[0];
+            var scope = _[1].reduce(function(acc, x, i) {
+                acc[x] = args[i];
+                return acc;
+            }, {});
+            return interpret(_[2], Context(scope, context));
+        };
+    };
+
     function Context(scope, parent) {
-        return function(identifier) {
+        function ctx(identifier) {
             if (identifier in scope) return scope[identifier];
             else if (parent !== undefined) return parent(identifier);
-        };
+        }
+        ctx.scope = scope;
+        return ctx;
     }
 
     function interpretList(_, context) {
+        if (_[0] in special) return special[_[0]](_, context);
         _ = _.map(function(x) { return interpret(x, context); });
         if (_[0] instanceof Function) return _[0].call(undefined, _.slice(1));
         else return _;

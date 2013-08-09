@@ -54,4 +54,29 @@ describe('basic things', function() {
             expect(frisk(['rest', 2, 1, 2, 3])).to.eql([1, 2, 3]);
         });
     });
+
+    describe('let', function() {
+        it('basic assign', function() {
+            expect(frisk(['let', [['foo', 1]], ['foo']])).to.eql([1]);
+            expect(frisk(['let', [['foo', 1], ['bar', 2]], 'bar'])).to.eql(2);
+        });
+        it('operations on let', function() {
+            expect(frisk(['let', [['foo', 1], ['bar', 2]], ['+', 'foo', 'bar']])).to.eql(3);
+        });
+    });
+
+    describe('lambda', function() {
+        it('identity lambda', function() {
+            expect(frisk([['lambda', ['x'], ['x']], 1])).to.eql([1]);
+        });
+
+        it('list lambda', function() {
+            expect(frisk([['lambda', ['x'], ['x', 'x']], 1])).to.eql([1, 1]);
+        });
+
+        it('math lambda', function() {
+            expect(frisk([['lambda', ['x'], ['+', 'x', 'x']], 1])).to.eql(2);
+            expect(frisk([['lambda', ['x'], ['*', 'x', 'x']], [2]])).to.eql(4);
+        });
+    });
 });
