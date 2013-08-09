@@ -1,4 +1,4 @@
-module.exports = frisk;
+if (typeof module !== 'undefined') module.exports = frisk;
 
 function frisk(input) {
     var library = {};
