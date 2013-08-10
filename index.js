@@ -55,7 +55,7 @@ function frisk(input) {
 
     library.e = Math.E;
 
-    ['sin', 'cos', 'floor', 'min', 'max', 'abs', 'round', 'ceil'].forEach(function(fn) {
+    ['sin', 'cos', 'floor', 'min', 'max', 'abs', 'round', 'ceil', 'log'].forEach(function(fn) {
         library[fn] = function(_) {
             return Math[fn](_[0]);
         };
