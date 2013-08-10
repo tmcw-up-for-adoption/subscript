@@ -20,27 +20,27 @@ function frisk(input) {
     };
 
     library['>'] = function(_) {
-        return interpret(_[0], context) > interpret(_[1], context);
+        return _[0] > _[1];
     };
 
     library['<'] = function(_) {
-        return interpret(_[0], context) < interpret(_[1], context);
+        return _[0] < _[1];
     };
 
     library['<='] = function(_) {
-        return interpret(_[0], context) <= interpret(_[1], context);
+        return _[0] <= _[1];
     };
 
     library['>='] = function(_) {
-        return interpret(_[0], context) >= interpret(_[1], context);
+        return _[0] >= _[1];
     };
 
     library['='] = function(_) {
-        return interpret(_[0], context) == interpret(_[1], context);
+        return _[0] == _[1];
     };
 
     library['!='] = function(_) {
-        return interpret(_[0], context) != interpret(_[1], context);
+        return _[0] != _[1];
     };
 
     library.first = function(_) {
