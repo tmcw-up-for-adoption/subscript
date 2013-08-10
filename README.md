@@ -4,23 +4,62 @@
 
 a lisp, kind of. all expressions are valid JSON-serializable javascript objects.
 
+### [examples](http://macwright.org/frisk/)
+
 ```js
-['/', 2, 1] // => 2
-['*', 2, 2] // => 4
-['-', 2, 2] // => 0
-['+', ['+', 1, 1], 1] // => 3
-[1, 2, 3] // => [1, 2, 3]
-['@foo'] // => ['foo']
-['let', [['foo', 1]], ['foo']] // => 1
-[['lambda', ['x'], ['x', 'x']], 1] // => [1, 1]
-[['lambda', ['x'], ['+', 'x', 'x']], 1] // => 2
+// atoms
+frisk('@string');
+frisk(1);
+frisk([]);
+
+// constants
+frisk('e');
+frisk('pi');
+
+// maths
+frisk(['+', 1, 1]);
+frisk(['*', 2, 2]);
+frisk(['/', 2, 4]);
+frisk(['floor', 0.2]);
+
+// trig
+frisk(['cos', 0]);
+frisk(['sin', 0]);
+
+// position
+frisk(['first', 2, 3, 4, 5]);
+frisk(['rest', 2, 3, 4, 5]);
+
+// let
+frisk(['let', [['x', 42]], 'x']);
+
+// lambda
+frisk([['lambda', ['x'], ['*', 'x', 'x']], [2]]);
+
+// if
+frisk(['if', true, '@foo', '@bar']);
+frisk(['if', false, '@foo', '@bar']);
+
+// comparison operators
+frisk(['=', 2, 2]);
+frisk(['>', 2, 2]);
+frisk(['>=', 2, 2]);
+frisk(['<=', 2, 2]);
+frisk(['<', 2, 2]);
+
+// functions to javascriptspace
+fn = frisk(['lambda', ['x'], ['/', 'x', 2]]);
+fn([8]);
 ```
 
-### Usage
+### usage
 
     npm install --save frisk
 
-web console: http://macwright.org/frisk/
+```js
+var frisk = require('frisk');
+frisk(['+', 2, 2]);
+```
 
 ### see also
 
