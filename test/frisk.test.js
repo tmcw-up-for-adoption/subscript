@@ -18,22 +18,55 @@ describe('basic things', function() {
     });
 
     describe('math', function() {
-        it('can add', function() {
+        it('+', function() {
             expect(frisk(['+', 1, 1])).to.eql(2);
         });
-        it('can subtract', function() {
+        it('-', function() {
             expect(frisk(['-', 1, 1])).to.eql(0);
             expect(frisk(['-', 3, 1])).to.eql(2);
             expect(frisk(['-', 3, 6])).to.eql(-3);
         });
-        it('can multiply', function() {
+        it('*', function() {
             expect(frisk(['*', 2, 1])).to.eql(2);
             expect(frisk(['*', 2, 2])).to.eql(4);
         });
-        it('can divide', function() {
+        it('/', function() {
             expect(frisk(['/', 2, 1])).to.eql(2);
             expect(frisk(['/', 2, 2])).to.eql(1);
             expect(frisk(['/', 1, 2])).to.eql(0.5);
+        });
+    });
+
+    describe('comparison operators', function() {
+        it('>', function() {
+            expect(frisk(['>', 2, 1])).to.eql(true);
+            expect(frisk(['>', 2, 2])).to.eql(false);
+            expect(frisk(['>', 1, 2])).to.eql(false);
+        });
+        it('<', function() {
+            expect(frisk(['<', 2, 1])).to.eql(false);
+            expect(frisk(['<', 2, 2])).to.eql(false);
+            expect(frisk(['<', 1, 2])).to.eql(true);
+        });
+        it('>=', function() {
+            expect(frisk(['>=', 2, 1])).to.eql(true);
+            expect(frisk(['>=', 2, 2])).to.eql(true);
+            expect(frisk(['>=', 1, 2])).to.eql(false);
+        });
+        it('<=', function() {
+            expect(frisk(['<=', 2, 1])).to.eql(false);
+            expect(frisk(['<=', 2, 2])).to.eql(true);
+            expect(frisk(['<=', 1, 2])).to.eql(true);
+        });
+        it('=', function() {
+            expect(frisk(['=', 2, 1])).to.eql(false);
+            expect(frisk(['=', 2, 2])).to.eql(true);
+            expect(frisk(['=', 1, 2])).to.eql(false);
+        });
+        it('!=', function() {
+            expect(frisk(['!=', 2, 1])).to.eql(true);
+            expect(frisk(['!=', 2, 2])).to.eql(false);
+            expect(frisk(['!=', 1, 2])).to.eql(true);
         });
     });
 

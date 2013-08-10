@@ -19,6 +19,30 @@ function frisk(input) {
         return _.slice(1).reduce(function(a, b) { return a / b; }, _[0]);
     };
 
+    library['>'] = function(_) {
+        return interpret(_[0], context) > interpret(_[1], context);
+    };
+
+    library['<'] = function(_) {
+        return interpret(_[0], context) < interpret(_[1], context);
+    };
+
+    library['<='] = function(_) {
+        return interpret(_[0], context) <= interpret(_[1], context);
+    };
+
+    library['>='] = function(_) {
+        return interpret(_[0], context) >= interpret(_[1], context);
+    };
+
+    library['='] = function(_) {
+        return interpret(_[0], context) == interpret(_[1], context);
+    };
+
+    library['!='] = function(_) {
+        return interpret(_[0], context) != interpret(_[1], context);
+    };
+
     library.first = function(_) {
         return _[0];
     };
