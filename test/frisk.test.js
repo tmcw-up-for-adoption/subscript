@@ -37,6 +37,23 @@ describe('basic things', function() {
         });
     });
 
+    describe('trigonometry', function() {
+        it('pi', function() {
+            expect(frisk('pi')).to.eql(Math.PI);
+        });
+        it('e', function() {
+            expect(frisk('e')).to.eql(Math.E);
+        });
+        it('sin', function() {
+            expect(frisk(['sin', 0])).to.eql(0);
+            expect(frisk(['sin', ['/', 'pi', 2]])).to.eql(1);
+        });
+        it('cos', function() {
+            expect(frisk(['cos', 0])).to.eql(1);
+            expect(frisk(['cos', 'pi'])).to.eql(-1);
+        });
+    });
+
     describe('nested expressions', function() {
         it('can add', function() {
             expect(frisk(['+', ['+', 1, 1], 1])).to.eql(3);
@@ -62,6 +79,13 @@ describe('basic things', function() {
         });
         it('operations on let', function() {
             expect(frisk(['let', [['foo', 1], ['bar', 2]], ['+', 'foo', 'bar']])).to.eql(3);
+        });
+    });
+
+    describe('if', function() {
+        it('basic if', function() {
+            expect(frisk(['if', true, ['@foo'], ['@bar']])).to.eql(['foo']);
+            expect(frisk(['if', false, ['@foo'], ['@bar']])).to.eql(['bar']);
         });
     });
 

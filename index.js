@@ -27,6 +27,16 @@ function frisk(input) {
         return _.slice(1);
     };
 
+    library.pi = Math.PI;
+
+    library.e = Math.E;
+
+    ['sin', 'cos', 'floor', 'min', 'max', 'abs', 'round', 'ceil'].forEach(function(fn) {
+        library[fn] = function(_) {
+            return Math[fn](_[0]);
+        };
+    });
+
     var special = {};
 
     special.let = function(_, context) {
@@ -46,6 +56,12 @@ function frisk(input) {
             }, {});
             return interpret(_[2], Context(scope, context));
         };
+    };
+
+    special['if'] = function(_, context) {
+        return interpret(_[1], context) ?
+            interpret(_[2], context) :
+            interpret(_[3], context);
     };
 
     function Context(scope, parent) {
