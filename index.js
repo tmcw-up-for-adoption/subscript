@@ -1,6 +1,6 @@
-if (typeof module !== 'undefined') module.exports = frisk;
+if (typeof module !== 'undefined') module.exports = subscript;
 
-function frisk(input) {
+function subscript(input) {
     var library = {};
 
     library['+'] = function(_) {
