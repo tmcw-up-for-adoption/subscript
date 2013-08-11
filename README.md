@@ -1,64 +1,64 @@
-[![Build Status](https://travis-ci.org/tmcw/frisk.png?branch=master)](https://travis-ci.org/tmcw/frisk)
+[![Build Status](https://travis-ci.org/tmcw/subscript.png?branch=master)](https://travis-ci.org/tmcw/subscript)
 
-## frisk
+## subscript
 
 a lisp, kind of. all expressions are valid JSON-serializable javascript objects.
 
-### [examples](http://macwright.org/frisk/)
+### [examples](http://macwright.org/subscript/)
 
 ```js
 // atoms
-frisk('@string');
-frisk(1);
-frisk([]);
+subscript('@string');
+subscript(1);
+subscript([]);
 
 // constants
-frisk('e');
-frisk('pi');
+subscript('e');
+subscript('pi');
 
 // maths
-frisk(['+', 1, 1]);
-frisk(['*', 2, 2]);
-frisk(['/', 2, 4]);
-frisk(['floor', 0.2]);
+subscript(['+', 1, 1]);
+subscript(['*', 2, 2]);
+subscript(['/', 2, 4]);
+subscript(['floor', 0.2]);
 
 // trig
-frisk(['cos', 0]);
-frisk(['sin', 0]);
+subscript(['cos', 0]);
+subscript(['sin', 0]);
 
 // position
-frisk(['first', 2, 3, 4, 5]);
-frisk(['rest', 2, 3, 4, 5]);
+subscript(['first', 2, 3, 4, 5]);
+subscript(['rest', 2, 3, 4, 5]);
 
 // let
-frisk(['let', [['x', 42]], 'x']);
+subscript(['let', [['x', 42]], 'x']);
 
 // lambda
-frisk([['lambda', ['x'], ['*', 'x', 'x']], [2]]);
+subscript([['lambda', ['x'], ['*', 'x', 'x']], [2]]);
 
 // if
-frisk(['if', true, '@foo', '@bar']);
-frisk(['if', false, '@foo', '@bar']);
+subscript(['if', true, '@foo', '@bar']);
+subscript(['if', false, '@foo', '@bar']);
 
 // comparison operators
-frisk(['=', 2, 2]);
-frisk(['>', 2, 2]);
-frisk(['>=', 2, 2]);
-frisk(['<=', 2, 2]);
-frisk(['<', 2, 2]);
+subscript(['=', 2, 2]);
+subscript(['>', 2, 2]);
+subscript(['>=', 2, 2]);
+subscript(['<=', 2, 2]);
+subscript(['<', 2, 2]);
 
 // functions to javascriptspace
-fn = frisk(['lambda', ['x'], ['/', 'x', 2]]);
+fn = subscript(['lambda', ['x'], ['/', 'x', 2]]);
 fn([8]);
 ```
 
 ### usage
 
-    npm install --save frisk
+    npm install --save subscript
 
 ```js
-var frisk = require('frisk');
-frisk(['+', 2, 2]);
+var subscript = require('subscript');
+subscript(['+', 2, 2]);
 ```
 
 ### see also
