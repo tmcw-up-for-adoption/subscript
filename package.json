@@ -1,5 +1,5 @@
 {
-    "name": "frisk",
+    "name": "subscript",
     "version": "0.0.0",
     "description": "a lisp, kind of",
     "main": "index.js",
