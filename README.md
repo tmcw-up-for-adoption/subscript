@@ -64,3 +64,4 @@ frisk(['+', 2, 2]);
 ### see also
 
 * heavily inspired by [little lisp](https://github.com/maryrosecook/littlelisp)
+* [JSOL](http://www.jsol.org/) is also a JavaScript-data language, in more of a C-family vein
